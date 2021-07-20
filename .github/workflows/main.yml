@@ -1,12 +1,12 @@
-name: GitHub Actions Demo
+name: Publish And Deploy Demo
 on:
-  push: 
+  push:
     tags:
       - 'v*'
 
 jobs:
   build-and-deploy:
-    runs-on: centos
+    runs-on: ubuntu-latest
     steps:
 
     # 下载源码
@@ -18,8 +18,7 @@ jobs:
       uses: actions/setup-node@master
     - run: npm install
     - run: npm run build
-    - run: tar -zcvf release.tgz .nuxt static app.js nuxt.config.js package.json package-lock.json ecosystem.config.js pm2.config.json
-
+    - run: tar -zcvf release.tgz .nuxt static nuxt.config.js package.json package-lock.json pm2.config.json
 
     # 发布 Release
     - name: Create Release
@@ -40,7 +39,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./release.tgz
         asset_name: release.tgz
         asset_content_type: application/x-tgz
@@ -58,5 +57,4 @@ jobs:
           wget https://github.com/Veycn/nuxtjs-realworld/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
           npm install --production
-          pm2 reload ecosystem.config.json
-
+          pm2 reload pm2.config.json
