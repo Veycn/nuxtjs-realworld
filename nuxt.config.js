@@ -1,4 +1,5 @@
 // import path from 'path';
+// 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
 module.exports = {
     // target: 'static',
     // 服务器部署配置
