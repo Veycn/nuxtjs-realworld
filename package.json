@@ -1,0 +1,27 @@
+{
+  "name": "nuxtdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt",
+    "start": "nuxt start",
+    "build": "nuxt build",
+    "gen": "nuxt generate",
+    "ngconf": "scp ./nginx.conf root@106.75.189.224:/root/nginx.conf",
+    "pm2conf": "scp ecosystem.config.js root@106.75.189.224:/root/ecosystem.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nuxt": "^2.15.2",
+    "sass-loader": "^11.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cookieparser": "^0.1.0",
+    "dayjs": "^1.10.4",
+    "js-cookie": "^2.2.1",
+    "markdown-it": "^12.0.4"
+  }
+}
